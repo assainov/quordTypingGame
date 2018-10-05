@@ -5,4 +5,4 @@
 
 ### Tehcnologies used: Bootstrap UI, OOP JavaScript, ES6 Classes, Fetch API from a local file with 2000 words
 
-![Quord](screenshot.JPG "Quord Typing Game")
+![Quord](dist/screenshot.JPG "Quord Typing Game")

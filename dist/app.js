@@ -140,6 +140,7 @@ fetch('words.txt')
 })
 .catch((error) => {
     words.push(error);
+    console.log(error);
 });
 
 
