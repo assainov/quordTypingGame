@@ -130,6 +130,7 @@ let words = [];
 fetch('words.txt')
 .then((response) => response.text())
 .then((response) => {
+    console.log('reading...')
     allWords = response.split('\r\n');
     
     for(let i = 0; i < allWords.length; i++) {
