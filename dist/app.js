@@ -127,7 +127,7 @@ let allWords;
 let words = [];
 
 //Fetch the words from the local file - can be modified to an external API
-fetch('https://assainov.github.io/quordTypingGame/words.txt')
+fetch('words.txt')
 .then((response) => response.text())
 .then((response) => {
     allWords = response.split('\r\n');
