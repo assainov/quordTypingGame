@@ -123,30 +123,31 @@ class UI {
 
 
 const time = 5;
+let score = 0;
 let allWords;
-let words = [];
+let words = ["color","random","dress","claim","myth","word","responsible","agency", "distinct"];
 
-//Fetch the words from the local file - can be modified to an external API
-fetch('words.txt')
-.then((response) => response.text())
-.then((response) => {
-    console.log('reading...')
-    allWords = response.split('\n');
+// //Fetch the words from the local file - can be modified to an external API
+// fetch('words.txt')
+// .then((response) => response.text())
+// .then((response) => {
+//     console.log('reading...')
+//     allWords = response.split('\n');
     
-    for(let i = 0; i < allWords.length; i++) {
-        if (allWords[i].includes(' ') === false) {
-            words.push(allWords[i]);
-        }
-    }
-})
-.catch((error) => {
-    words.push(error);
-    console.log(error);
-});
+//     for(let i = 0; i < allWords.length; i++) {
+//         if (allWords[i].includes(' ') === false) {
+//             words.push(allWords[i]);
+//         }
+//     }
+// })
+// .catch((error) => {
+//     words.push(error);
+//     console.log(error);
+// });
 
 
 //Initiate a game object
-const game = new Game(time, 0, false);
+const game = new Game(time, score, false);
 
 //Initiate a UI object
 const ui = new UI;
