@@ -9,18 +9,37 @@ class Game {
     }
     //Init is used when the window is loaded
     init() {
-        //Display the number of seconds in the game
-        ui.displayTimeframe(time);
-        //Display the score of 0 in the beginning
-        ui.displayScore(0);
-        //Create a word as the page loads
-        game.getWord();
-        // Timer for counting down the time left
-        setInterval(game.timer, 1000);
-        // Checking the status of game every 50 miliseconds
-        setInterval(game.status, 50);
-        //Listening for the input field
-        ui.listenToInput();
+
+        //Fetch the words from the local file - can be modified to an external API
+        fetch('words.txt')
+        .then((response) => response.text())
+        .then((response) => {
+            console.log('reading...')
+            allWords = response.split('\n');
+            
+            for(let i = 0; i < allWords.length; i++) {
+                if (allWords[i].includes(' ') === false) {
+                    words.push(allWords[i]);
+                }
+            }
+            //Display the number of seconds in the game
+            ui.displayTimeframe(time);
+            //Display the score of 0 in the beginning
+            ui.displayScore(0);
+            //Create a word as the page loads
+            game.getWord();
+            // Timer for counting down the time left
+            setInterval(game.timer, 1000);
+            // Checking the status of game every 50 miliseconds
+            setInterval(game.status, 50);
+            //Listening for the input field
+            ui.listenToInput();
+        })
+        .catch((error) => {
+            words.push(error);
+            console.log(error);
+        });
+        
     }
     //Returns a random word from the array words
     getWord() {
@@ -125,25 +144,9 @@ class UI {
 const time = 5;
 let score = 0;
 let allWords;
-let words = ["color","random","dress","claim","myth","word","responsible","agency", "distinct"];
+let words = [];
 
-// //Fetch the words from the local file - can be modified to an external API
-// fetch('words.txt')
-// .then((response) => response.text())
-// .then((response) => {
-//     console.log('reading...')
-//     allWords = response.split('\n');
-    
-//     for(let i = 0; i < allWords.length; i++) {
-//         if (allWords[i].includes(' ') === false) {
-//             words.push(allWords[i]);
-//         }
-//     }
-// })
-// .catch((error) => {
-//     words.push(error);
-//     console.log(error);
-// });
+
 
 
 //Initiate a game object
